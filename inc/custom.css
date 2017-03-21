@@ -11,7 +11,8 @@ h2 {
 }
 
 .figure {
-    margin: 100px 150px 100px 80px;
+    margin: auto;
+    width: 80%;
 }
 
 #twocol {
