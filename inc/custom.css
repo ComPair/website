@@ -10,6 +10,10 @@ h2 {
     color: #4461AD;
 }
 
+.figure {
+    margin: 100px 150px 100px 80px;
+}
+
 #twocol {
 -moz-column-count: 2;
 -webkit-column-count: 2;
