@@ -51,6 +51,38 @@ low energy readout in the calorimeter.</p>
 </table>
 </p>
 
+<h2>Simulations and Performance</h2>
+
+Simulations and event reconstruction are performed using the <a href="http://megalibtoolkit.com">MEGAlib</a> framework which requires ROOT (v6.06) and Geant4 (v10). The detector volume is built in Geomega (Geometry for MEGAlib). The geometry file describes the volume, the materials, the detectors, the trigger criteria. It is used by all programs in the MEGAlib framework including the Geant4 simulation. 
+The event simulation is done using Cosima (COsmic SImulator for MEGAlib based on Geant4). For our studies we have used a “Far Field Point Source”, in which particles are emitted from a disk defined by a surrounding sphere. Events are generated as a function of energy and incidence angle (cos(theta)) with 100k triggers. 
+
+<br>
+
+Event reconstruction is done using Revan (real event analyzer). It uses the simulation files which are output from Cosima. Revan reconstructs Compton scattering, pair conversion and charged particles (muons, protons, etc). The algorithm first reconstructs tracks and searches for vertices in those tracks from pair conversion. If a vertex is not found, the tracks are checked for consistencies  with charged particles (hits in the ACD, etc). If these criteria are not met, events are sent to the Compton reconstruction algorithm. Revan specializes in Compton events. One main outcome of this study is that a new pair conversion algorithm (based of the Fermi-LAT event reconstruction) will need to be written. 
+
+<br>
+
+The data analysis is done using a program that was developed specifically for this study, EventAnalysis. (The MEGAlib algorithm that does this is called Mimrec, we wrote our own version to fit our specific needs.) With EventAnalysis, we make additional event selections (specifically we include a 60 degree cut on the opening angle of pair conversion events). 
+
+<br>
+
+We then can calculate the angular and energy resolution of the ComPair instrument (based on the true generated events). These are calculated in the following ways: 
+<ul>
+  <li>Angular Resolution Compton Events: The difference between the reconstructed and true direction. The angular resolution is the angular distance from the true known direction to the outer edge of the compton cone (or arc). </li>
+  <li>Angular Resolution Pair Events: The difference between the true direction and the reconstructed direction.  The reconstructed direction is determined by the bisect angle of the electron and positron direction vectors, weighted by energy. The angular resolution is the 68% containment of the resulting distribution. </li>
+</ul>
+
+
+The angular resolution and effective area are plotted with respect to the incoming photon energy below (left and right respectively). 
+
+
+<div class="figure">
+<center><img src="images/AngularResolution_Cos1.0.pdf" alt="Angular Resolution"></center>
+<center><img src="images/EffectiveArea_Cos1.0.pdf" alt="Effective Area"></center>
+<p>Effective area at an incidence angle of zero degrees.</p>
+</div>
+
+
 <h2>The Observatory</h2>
 
 <p>AMEGO will operate in low-earth orbit in two modes: a survey mode covering a large fraction
